@@ -36,3 +36,7 @@ PORT=1234
 AWS_ACCESS_KEY="foobar"
 AWS_SECRET_KEY="baz"
 ```
+
+## License
+
+Public domain ([CC0](https://creativecommons.org/publicdomain/zero/1.0/)).
