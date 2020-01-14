@@ -10,6 +10,15 @@ usage() {
     echo "  -f envfile  load environment from file"
 }
 
+do_source() {
+    case "$1" in
+    */*)
+        . "$1"
+        ;;
+    *)  . "./$1"
+    esac
+}
+
 ignore_i=0
 
 while getopts !hipf: opt; do
@@ -25,7 +34,7 @@ while getopts !hipf: opt; do
         ;;
     f)
         set -a
-        . "${OPTARG}"
+        do_source "${OPTARG}"
         set +a
         ;;
     h)
