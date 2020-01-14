@@ -1,7 +1,18 @@
 # envx
 
+[![Release][release-badge]][release-url]
+[![Build Status][travis-badge]][travis-url]
+[![CC0 Public Domain][license-badge]][license-url]
+
 `envx` is a POSIX shell script that sets environment and executes a command.
 Similar to the standard `env(1)` but `envx` can load environment from file(s).
+
+[release-badge]: https://img.shields.io/github/release/snsinfu/envx.svg
+[release-url]: https://github.com/snsinfu/envx/releases
+[travis-badge]: https://travis-ci.org/snsinfu/envx.svg?branch=master
+[travis-url]: https://travis-ci.org/snsinfu/envx
+[license-badge]: https://img.shields.io/badge/license-CC0-blue.svg
+[license-url]: https://creativecommons.org/publicdomain/zero/1.0/
 
 ## Install
 
