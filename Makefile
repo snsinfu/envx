@@ -7,5 +7,5 @@ test:
 
 install:
 	mkdir -p $(DESTDIR)
-	cp xenv $(DESTDIR)
-	chmod 0755 $(DESTDIR)/xenv
+	cp envx $(DESTDIR)
+	chmod 0755 $(DESTDIR)/envx
