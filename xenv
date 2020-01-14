@@ -1,0 +1,43 @@
+#!/bin/sh -eu
+
+usage() {
+    echo "usage: xenv [-hip] [-f envfile] [name=value]... command..."
+    echo ""
+    echo "options:"
+    echo "  -h          print this help message and exit"
+    echo "  -i          clear environment"
+    echo "  -p          reset PATH to system's default (getconf PATH)"
+    echo "  -f envfile  load environment from file"
+}
+
+ignore_i=0
+
+while getopts !hipf: opt; do
+    case ${opt} in
+    !)
+        ignore_i=1
+        ;;
+    i)
+        [ ${ignore_i} != 0 ] || exec /usr/bin/env -i "$0" -! "$@"
+        ;;
+    p)
+        export PATH="$(/usr/bin/getconf PATH)"
+        ;;
+    f)
+        set -a
+        . "${OPTARG}"
+        set +a
+        ;;
+    h)
+        usage >&2
+        exit 0
+        ;;
+    *)
+        usage >&2
+        exit 125
+    esac
+done
+
+shift $((OPTIND - 1))
+
+exec /usr/bin/env "$@"
