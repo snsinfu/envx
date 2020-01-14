@@ -24,6 +24,6 @@ ASSERT() {
 cd "${test_dir}"
 
 for test_script in ./test_*.sh; do
-    . "${test_script}"
+    ( . "${test_script}" )
     echo ""
 done
