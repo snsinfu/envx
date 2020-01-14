@@ -1,1 +1,29 @@
-#!/bin/sh -eux
+#!/bin/sh -eu
+
+test_dir="$(dirname "$0")"
+base_dir="${test_dir}/.."
+PATH="${base_dir}:${PATH}"
+
+RED="$(printf '\e[1;31m')"
+GREEN="$(printf '\e[1;32m')"
+RESET="$(printf '\e[0m')"
+
+TEST_CASE() {
+    echo "=== $1 ==="
+}
+
+ASSERT() {
+    if [ "$@" ]; then
+        echo " ${GREEN}PASS${RESET}: $*"
+    else
+        echo " ${RED}FAIL${RESET}: $*"
+        exit 1
+    fi
+}
+
+cd "${test_dir}"
+
+for test_script in ./test_*.sh; do
+    . "${test_script}"
+    echo ""
+done
